@@ -158,16 +158,87 @@ let arrayNumber = [4, 74, 28, 12, 11];
  *.filter((user) => user.admin == false) Ici on filtre que le membre et non admin
  * .sort((a, b) => b.age - a.age) permet de ranger par ordre de l'age du plus grand au plus petit
  * <p>Status : ${user.admin ? "Modérateur" : "Membre"} </p> une ternaire (comme if et else)
- */
-document.body.innerHTML = data
-  .filter((user) => user.admin == false)
-  .sort((a, b) => b.age - a.age)
-  .map(
-    (user) =>
-      `<div class="user-card">
-    <h2>${user.pseudo}</h2>
-    <p>Age : ${user.age} ans</p>
-    <p>Status : ${user.admin ? "Modérateur" : "Membre"} </p>
-    </div>
-    `
-  );
+//  */
+// document.body.innerHTML = data
+//   .filter((user) => user.admin == false)
+//   .sort((a, b) => b.age - a.age)
+//   .map(
+//     (user) =>
+//       `<div class="user-card">
+//     <h2>${user.pseudo}</h2>
+//     <p>Age : ${user.age} ans</p>
+//     <p>Status : ${user.admin ? "Modérateur" : "Membre"} </p>
+//     </div>
+//     `
+//   );
+
+//-------------
+// Les dates
+//-------------
+
+// Date classique
+let date = new Date();
+
+//Timestamp
+let timestamp = Date.parse(date);
+
+let iso = date.toISOString();
+
+function dateParser(chaine) {
+  let newDate = new Date(chaine).toLocaleDateString("fr-FR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+  });
+  return newDate;
+}
+
+// ------------------
+// Destructuring
+//------------------
+
+let moreData = {
+  destVar: ["Element 1", "Element 2"],
+};
+
+const { destVar } = moreData;
+// console.log(destVar);
+
+let array5 = [70, 80, 90];
+let [x, y, z] = array5;
+
+function dateDestructuring(chaine) {
+  // split casse, c'est à dire que
+  //ça décompose plusieurs élements dans un tableau
+  let newDate = chaine.split("T")[0];
+  let [y, m, d] = newDate.split("-");
+
+  // join regroupe tous
+  return [d, m, y].join("/");
+}
+// console.log(dateDestructuring(iso));
+
+//---------------------------------------
+// Les Datasets
+//---------------------------------------
+
+const h3js = document.getElementById("JavaScript");
+// console.log(h3js.dataset.lang);
+
+const h3 = document.querySelectorAll("h3");
+
+// h3.forEach((languages) => console.log(languages.dataset.lang));
+
+//--------------------------
+// Les Regex
+//--------------------------
+let mail = "from_scratch33@gmail.com";
+// console.log(mail.replace(/from/, "fuckyouhard"));
+// console.log(mail.match(/Scratch/i));
+// console.log(mail.match(/[145]/)); trouver si y a un nombre dés dans
+
+// console.log(mail.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i));
+
+let separator = 265264849;
